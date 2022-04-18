@@ -39,4 +39,9 @@ public int DeleteRow(Maid m)
 {
 	return maidrepo.DeleteRow(m);
 }
+
+//public int UpdateStatus(Maid m)
+//{
+//	return maidrepo.UpdateStatus(m);
+//}
 }

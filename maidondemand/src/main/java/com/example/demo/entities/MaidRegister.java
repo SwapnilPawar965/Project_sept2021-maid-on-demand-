@@ -33,17 +33,17 @@ private String m_name;
 	
 	private String is_active; 
 	
-	//@JsonFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	//
+	@Temporal(TemporalType.TIMESTAMP)
+	//@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date nacimiento;
 
-	private Date created_date = new Date();
 	
 	List<String> categorydetails=new ArrayList<String>(); 
 	
 	public MaidRegister(String m_name, String gender, String marital_status, String address, String contact_no,
-			String aadhar_card, String is_active, Date created_date, List<String> categorydetails) {
+			String aadhar_card, String is_active, List<String> categorydetails) {
 		super();
 		this.m_name = m_name;
 		this.gender = gender;
@@ -52,7 +52,6 @@ private String m_name;
 		this.contact_no = contact_no;
 		this.aadhar_card = aadhar_card;
 		this.is_active = is_active;
-		this.created_date = created_date;
 		this.categorydetails = categorydetails;
 	}
 	
@@ -112,13 +111,6 @@ private String m_name;
 		this.is_active = is_active;
 	}
 
-	public Date getCreated_date() {
-		return created_date;
-	}
-
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
-	}
 
 	public List<String> getCategorydetails() {
 		return categorydetails;
@@ -134,7 +126,7 @@ private String m_name;
 	public String toString() {
 		return "MaidRegister [m_name=" + m_name + ", gender=" + gender + ", marital_status=" + marital_status
 				+ ", address=" + address + ", contact_no=" + contact_no + ", aadhar_card=" + aadhar_card
-				+ ", is_active=" + is_active + ", created_date=" + created_date + ", categorydetails=" + categorydetails
+				+ ", is_active=" + is_active +  ", categorydetails=" + categorydetails
 				+ "]";
 	}
 

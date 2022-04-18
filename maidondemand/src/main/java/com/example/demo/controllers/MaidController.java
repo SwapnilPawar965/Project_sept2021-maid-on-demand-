@@ -57,7 +57,7 @@ public class MaidController {
 		public Maid registerMaid(@RequestBody MaidRegister m)
 		{
 			//System.out.println(m);
-			Maid maiddetails =new Maid(m.getM_name(),m.getGender(),m.getMarital_status(),m.getAddress(),m.getContact_no(),m.getAadhar_card(),m.getIs_active(),m.getCreated_date());
+			Maid maiddetails =new Maid(m.getM_name(),m.getGender(),m.getMarital_status(),m.getAddress(),m.getContact_no(),m.getAadhar_card(),m.getIs_active());
 			Maid savedmaid=maidservice.savec(maiddetails);
 			
 			
@@ -83,5 +83,12 @@ public class MaidController {
 		 {
 			  return maidservice.DeleteRow(m); 
 		 }
+		
+//		@PostMapping("/updatestatus") 
+//		 public int UpdateStatus(@RequestBody Maid m)
+//		 {
+//			  return maidservice.UpdateStatus(m); 
+//		 }
+		
 }
 

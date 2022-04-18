@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -47,14 +49,7 @@ public class Maid {
 	@Column
 	private String is_active; 
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	@Column
-	private Date created_date = new Date();
-	//private Date created_date;
-	//@OneToMany(mappedBy="midby",cascade=CascadeType.ALL)
-	//Set<Category> cat;
-	
-	//List<String> cat = new ArrayList<String>(); 
+	 
 	
 	public Maid() {
 		super();
@@ -66,7 +61,7 @@ public class Maid {
 	
 
 	public Maid(String m_name, String gender, String marital_status, String address, String contact_no,
-			String aadhar_card, String is_active, Date created_date) {
+			String aadhar_card, String is_active) {
 		super();
 		this.m_name = m_name;
 		this.gender = gender;
@@ -75,8 +70,7 @@ public class Maid {
 		this.contact_no = contact_no;
 		this.aadhar_card = aadhar_card;
 		this.is_active = is_active;
-		this.created_date = created_date;
-		//this.cat = cat;
+		
 	}
 
 	public int getMaid_id() {
@@ -143,13 +137,7 @@ public class Maid {
 		this.is_active = is_active;
 	}
 
-	public Date getCreated_date() {
-		return created_date;
-	}
-
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
-	}
+	
 	
 	/*
 	 * public List<String> getCat() { return cat; }
@@ -177,7 +165,7 @@ public class Maid {
 	public String toString() {
 		return "Maid [maid_id=" + maid_id + ", m_name=" + m_name + ", gender=" + gender + ", marital_status="
 				+ marital_status + ", address=" + address + ", contact_no=" + contact_no + ", aadhar_card="
-				+ aadhar_card + ",  created_date=" + created_date + "]";
+				+ aadhar_card +  "]";
 	}
 	
 	

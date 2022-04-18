@@ -20,7 +20,7 @@ public interface MaidRepository extends JpaRepository<Maid, Integer> {
 	@Query(value="select * from tbl_maid where maid_id=?1",nativeQuery=true)
 	public Maid getMaidById(int maid);
 	
-	@Query(value="select * from tbl_maid m join tbl_category c on m.maid_id=c.mid where c.category_name=?1",nativeQuery=true)
+	@Query(value="select * from tbl_maid m join tbl_category c on m.maid_id=c.mid where c.category_name=?1 and m.is_active='Y'",nativeQuery=true)
 	//@Query("select m from Maid m join Category c on m.maid_id=c.mid where c.category_name like %?1 ")
 	public List<Maid> maidList(String  cat);
 	
@@ -28,4 +28,8 @@ public interface MaidRepository extends JpaRepository<Maid, Integer> {
 	@Query(value="delete from tbl_maid where maid_id=?1",nativeQuery=true)
 	public int DeleteRow(Maid m);
 	
+//	@Modifying
+//	@Query(value=" from tbl_maid where maid_id=?1",nativeQuery=true)
+//	public int UpdateStatus(Maid m);
+//	
 }
