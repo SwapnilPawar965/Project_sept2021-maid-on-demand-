@@ -1,7 +1,5 @@
 import React from "react";
-import img1 from "./Images/cooking.jpg";
-import img2 from "./Images/cleaning.jpg";
-import img3 from "./Images/washing.jpg";
+
 import M from "./Images/M.jpg";
 import 'animate.css';
 

@@ -34,7 +34,8 @@ class MainMenu extends React.Component
     }    
     render(){
         mystore.subscribe(()=>{this.setState({flag : mystore.getState().loggedin})})
-        
+        const category_name = require("./demo.json");
+
     return(
         <BrowserRouter>
         <div style = {{display: this.state.flag?'none':'block'}}>

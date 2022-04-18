@@ -57,6 +57,8 @@ function Login() {
         .then(resp=> resp.text())
         .then((data)=>{
                 setMsg(data);
+                if(data!='')
+                {
                 const json =JSON.parse(data);
                 console.log(json);
 
@@ -72,14 +74,15 @@ function Login() {
                     localStorage.setItem("loggedin",true);
                     navigate('/CustomerHome');
                 }   
-                else 
+                else
                 {
                    // <redirect to="/login"></redirect>
-                    alert("login failed");
+                    alert("invalid credintials");
                     //navigate('#');
                     window.location="/login";
                 }
-
+            }
+            else{alert("Enter valid details");}
             })
         }
             
@@ -92,7 +95,7 @@ function Login() {
     {/* <style>{{backgroundImage:'url(${F})'}}</style>*/}
              {<style>{'body{background-color:#DFDFDE}'}</style>}
                 <form>
-                <h3>Sign In</h3> <hr></hr>
+                <h3>Sign In</h3> <hr/>
                 <div className="form-group"  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}
 >
                     <label>User Email</label> &nbsp;&nbsp;&nbsp; 
@@ -100,7 +103,7 @@ function Login() {
                 </div><br/>
                 <div className="form-group"  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
                     <label>Password</label> &nbsp;  &nbsp; 
-                    <input type="text" style={{width: "400px"}} name="password" className="form-control" placeholder="Enter password" onChange={handleInput} value={customer.password}/>
+                    <input type="password" style={{width: "400px"}} name="password" className="form-control" placeholder="Enter password" onChange={handleInput} value={customer.password}/>
                 </div><br/>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary btn-block" onClick={submitForm}>Login</button>

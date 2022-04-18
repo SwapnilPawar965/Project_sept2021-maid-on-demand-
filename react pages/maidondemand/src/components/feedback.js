@@ -61,7 +61,7 @@ class Feedback extends React.Component
     }
 
     cancel=()=>{
-        this.props.history.push('/customerHome');
+      window.location="/CustomerHome";
     }
 
     submit=(event)=>
@@ -119,14 +119,14 @@ class Feedback extends React.Component
 
         return(
           <div className="container-fluid" style={{ backgroundImage:`url(${E})`,height:'695px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover'}}>
-          <h4>Welcome Admin</h4>
+          <h4 ><b><i>Welcome {JSON.parse(localStorage.getItem('loggedincustomer')).c_name}</i></b></h4>
              <hr />
-         <div style = {{display: this.state.flag?'none':'block', backgroundColor:'white' }} className="nav nav-tabs" >
+         <div style = {{display: this.state.flag?'none':'block' }} className="nav nav-tabs" >
            
             {<style>{'body{background-color:#DFDFDE}'}</style>}
             <div id="form" className="mb-3 pageheading" >
                       <hr/>   
-                         <h2>Personal Info</h2>
+                         <h2>Feedback</h2>
                      </div>
                      <hr/>
             <br/><br/>

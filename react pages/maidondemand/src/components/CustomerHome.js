@@ -9,6 +9,7 @@ import Feedback from './feedback';
 import Login from './login';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import BookingInfo from './bookinginfo';
+import E from './Images/E.jpg';
 
 export default class CustomerHome extends React.Component
  {
@@ -83,7 +84,7 @@ export default class CustomerHome extends React.Component
    submit= (maids)=>(ev)=>{
         console.log('We need to get the details for ',maids);
         localStorage.setItem("bookedmaid",JSON.stringify(maids));
-
+        
         
         window.location="/bookmaid?maidinfo="+maids;       
        // localStorage.setItem("bookedmaid",true);
@@ -101,31 +102,22 @@ export default class CustomerHome extends React.Component
      }
 
     render(){
-        return (
-           <div>
-              <h4>Welcome {JSON.parse(localStorage.getItem('loggedincustomer')).c_name} </h4> 
-             
-                <div className="container-fluid" >
-                    {<style>{'body{background-color:#DFDFDE}'}</style>}
+        const category_name = require("./demo.json");
 
-               </div>
-               <div style={{height:"70px", backgroundColor:"lightgreen", borderStyle:"solid", borderWidth:"2px",  left:"116px",top:"0", width:"1125px"}}>
-                   <center>
-                       <span>
-                           <table style={{borderCollapse:"collapse"}} cellPadding={"10"}>
-                                  <thead>
-                                       <tr>
-                                           <td><Link className="btn btn-link" to="/profile" >Profile</Link></td>
-                                           <td><Link className="btn btn-link" to="/bookinginfo" >Bookinginfo</Link></td>
-                                           <td><Link className="btn btn-link" to="/feedback" >Feedback</Link></td>
-                                           <td>< a href="/login" onClick={this.logout}> LOGOUT </a> </td>
-                                           
-                                       </tr> 
-                                   </thead>
-                           </table>
-                       </span>	
-                      
-                       </center>
+        return (
+            <div style={{ backgroundImage:`url(${E})`,height:'695px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover'}}>
+            <h4 style={{fontFamily:'arial', fontSize:36}}><b><i>Welcome {JSON.parse(localStorage.getItem('loggedincustomer')).c_name}</i></b></h4>
+               <hr />
+           <div style = {{display: this.state.flag?'none':'block', backgroundColor:'white' }} className="nav nav-tabs" >
+                <ul className="nav nav-tabs" >
+                                      
+                    <li className="nav-item"><Link className="nav-link" to="/profile" >Profile</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/bookinginfo" >Bookinginfo</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/feedback" >Feedback</Link></li>
+                    <li className="nav-item" style={{flex:1}} >                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button>< a href="/login" onClick={this.logout} style={{flex:1}}> LOGOUT </a> </button></li>
+                 </ul>                          
+                                      
                    <Routes>
                        
                        <Route path="/login" element={<Login/>}/>
@@ -140,8 +132,9 @@ export default class CustomerHome extends React.Component
               <select name="category" onChange={this.handleChange}>
                   {/*<option value="select">select</option>*/}
                     {
-                        this.state.category.map(category =>{
-                         return(<option value={category.category_name} >{category.category_name}</option>)
+                        category_name.cat.map(category =>{
+                            return(<option key={category.category_name} value={category.category_name} >{category.category_name}</option>)
+   
                                
                         })
                        
@@ -167,7 +160,6 @@ export default class CustomerHome extends React.Component
                                     <th>Address</th>
                                     <th>Contact No.</th>
                                     <th>charges</th>
-                                    <th>Availability Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -182,7 +174,6 @@ export default class CustomerHome extends React.Component
                                     <td>{maids.address}</td>
                                     <td>{maids.contact_no}</td>
                                     <td>{this.state.charges}</td>
-                                    <td>{maids.is_active}</td>
                                    {/* <td><Link to={{pathname:'/bookmaid',state:{maidlist:maids}}}>bookmaid</Link></td>*/}
                                     <td><button  onClick={this.submit(maids)}>Bookmaid</button></td>
                                  </tr>);

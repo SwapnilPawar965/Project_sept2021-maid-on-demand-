@@ -1,6 +1,7 @@
 import { data, event } from "jquery";
 import React from "react";
 import { Button, Col, Form, Input, InputGroup } from 'reactstrap';
+import personal from './Images/personal.jpg';
 
 const validContactRegex = RegExp(
     / \+91-[\d]{10}$/
@@ -25,6 +26,7 @@ class UpdateMaid extends React.Component
             marital_status:'',
             address: '',
             contact_no:'',
+            is_active:'',
             aadhar_card:'',
             
 
@@ -93,6 +95,7 @@ class UpdateMaid extends React.Component
         gender:(JSON.parse(localStorage.getItem('updatemaid')).gender),
         marital_status:(JSON.parse(localStorage.getItem('updatemaid')).marital_status),
         address:this.state.address,
+        is_active:(JSON.parse(localStorage.getItem('updatemaid')).is_active),
         contact_no: this.state.contact_no,
         aadhar_card:(JSON.parse(localStorage.getItem('updatemaid')).aadhar_card),
      })
@@ -123,8 +126,10 @@ class UpdateMaid extends React.Component
         const {errors} = this.state;
 
         return(
-            <div className="container-fluid" >
+            <div className="container-fluid"  style={{ backgroundImage:`url(${personal})`,height:'895px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover', color:'white'}} >
                {<style>{'body{background-color:#DFDFDE}'}</style>}
+               <h4 style={{fontFamily:'arial', fontSize:36}}><b><i>Welcome Admin </i></b></h4>
+                <hr />
                <div id="form" class="row" className="mb-3 pageheading" >
                          <hr/>   
                             <h2>Maid Personal Info</h2>

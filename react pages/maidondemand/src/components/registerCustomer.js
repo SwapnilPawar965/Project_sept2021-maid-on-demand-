@@ -1,6 +1,7 @@
 import { data } from "jquery";
 import React from "react";
 import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row,FormGroup } from 'reactstrap';
+import register from './Images/register.jpg';
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -157,14 +158,9 @@ this.setState({errors, [name]: value});
 
 
 
-cancel=()=>{
-  window.location="/login";
-}
+cancel=()=>{ window.location="/login";}
 
-reset=()=>{
-
-window.location="/registerCustomer";
-}
+reset=()=>{window.location="/registerCustomer";}
 
    
 
@@ -208,7 +204,8 @@ window.location="/registerCustomer";
 
        //alert(this.state.user_type);
         
-        
+       if(this.state.c_name!='' && this.state.gender!='' && this.state.family_status!='' && this.state.address!='' && this.state.email_id!='' && this.state.contact_no!='' && this.state.aadhar_card!='')
+        {
           fetch('http://localhost:8080/customerRegistration',requestOption)
           .then(res=>{
             if(res.status==200)
@@ -223,6 +220,10 @@ window.location="/registerCustomer";
                 window.location="#";
             }
           })
+        }
+        else{
+          alert("All fields are amndatory");
+        }
         
        
         
@@ -231,16 +232,12 @@ window.location="/registerCustomer";
     
     
 
-              render() {
+       render() {
           
-
                 const {errors} = this.state;
-
-
-           
                 return (
-         
-                    <div className="container-fluid" >
+                  <div className="container-fluid" style={{ backgroundImage:`url(${register})`,height:'695px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover'}}>
+                    
                        {<style>{'body{background-color:#DFDFDE}'}</style>}
                        <div id="form" class="row" className="mb-3 pageheading" >
                                  <hr/>   
@@ -317,8 +314,8 @@ window.location="/registerCustomer";
                                   </div>
                                   
                                 <Button  onClick={(event) => {this.register(event)}}  color="success" >Register</Button>
-                                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
-                                <button className="btn btn-primary" onClick={this.reset.bind(this)} style={{marginLeft: "10px"}}>Reset</button>
+                                <Button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</Button>
+                                <Button className="btn btn-primary" onClick={this.reset.bind(this)} style={{marginLeft: "10px"}}>Reset</Button>
                                 </Form>
                                 
                                 </Col>

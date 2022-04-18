@@ -1,0 +1,8 @@
+{
+    "cat":[
+       { "category_name" : "washing"},
+       {"category_name" : "cleaning"},
+       {"category_name" : "cooking"}
+
+    ]
+}

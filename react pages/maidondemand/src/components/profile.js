@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Col, Form, Input, InputGroup } from 'reactstrap';
 import { Link, Route, Routes, BrowserRouter } from 'react-router-dom';
 import CustomerHome from "./CustomerHome";
+import personal from './Images/personal.jpg';
 
 const validContactRegex = RegExp(
     / \+91-[\d]{10}$/
@@ -82,8 +83,8 @@ class Profile extends React.Component
         }
 
         cancel=(event)=>{
-          
-            <a href="/CustomerHome"></a>;
+         // window.location="/CustomerHome";
+            
     }
 
 
@@ -150,8 +151,10 @@ class Profile extends React.Component
    
         return (
  
-            <div className="container-fluid" >
+            <div className="container-fluid"  style={{ backgroundImage:`url(${personal})`,height:'895px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover', color:'white'}} >
                {<style>{'body{background-color:#DFDFDE}'}</style>}
+               <h4 style={{fontFamily:'arial', fontSize:36}}><b><i>Welcome {JSON.parse(localStorage.getItem('loggedincustomer')).c_name}</i></b></h4>
+               <hr />
                <div id="form" class="row" className="mb-3 pageheading" >
                          <hr/>   
                             <h2>Personal Info</h2>
@@ -231,7 +234,7 @@ class Profile extends React.Component
                           </div>
                          
                         <Button  onClick={(event) => {this.update(event)}}  color="success" >Update</Button>
-                        <button className="btn btn-danger" onClick={this.cancel(event)} style={{marginLeft: "10px"}}>Cancel</button>
+                        
               
                         </Form>
                         <br/><br/><br/><br/><br/><br/><br/><br/>

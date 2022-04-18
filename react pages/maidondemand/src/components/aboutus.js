@@ -8,7 +8,7 @@ class AboutUs extends Component {
         this.state = {
                  
         }
-    }
+    } 
 
     render() {
         return (
@@ -16,13 +16,13 @@ class AboutUs extends Component {
            
                
                     <h1 class=" text-white">About Us </h1>
-                    <p>We are Pune Based Courier Service </p>
+                    <p class=" text-white">We are Pune Based Courier Service </p>
                 
                
                 
                 <h2 >Our Team</h2>
                 <div class="row">
-                    <div class="column">
+                    <div class="column" class=" text-white">
                         <div >
                             <div >
                                 <h2>Manish Kumar</h2>

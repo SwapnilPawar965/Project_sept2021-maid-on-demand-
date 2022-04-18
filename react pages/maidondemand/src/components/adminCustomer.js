@@ -124,8 +124,8 @@ const ValidateForm = errors => {
                
         return (
           <div className="Container-fluid" style={{ backgroundImage:`url(${E})`,height:'695px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover'}}>
-          <h4>Welcome Admin</h4>
-             <hr />
+            <h4 style={{fontFamily:'arial', fontSize:36}}><b><i>Welcome Admin </i></b></h4>
+                <hr />
          <div style = {{display: this.state.flag?'none':'block', backgroundColor:'white' }}>
 
                       

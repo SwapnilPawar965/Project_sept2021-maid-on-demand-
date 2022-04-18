@@ -186,8 +186,8 @@ const ValidateForm = errors => {
                
         return (
           <div className="Container-fluid" style={{ backgroundImage:`url(${E})`,height:'695px' ,backgroundRepeat:"no-repeat",backgroundSize:'cover'}}>
-          <h4>Welcome Admin</h4>
-             <hr />
+            <h4 style={{fontFamily:'arial', fontSize:36}}><b><i>Welcome Admin </i></b></h4>
+                <hr />
          <div style = {{display: this.state.flag?'none':'block', backgroundColor:'white' }} className="nav nav-tabs" >
 
                        
@@ -202,6 +202,7 @@ const ValidateForm = errors => {
                                     <th>Marital Status</th>
                                     <th>Address</th>
                                     <th>Contact No.</th>
+                                    <th>Availibility Status</th>
                                     <th>Action</th>
                                     <th>Action</th>
                                 </tr>
@@ -216,6 +217,7 @@ const ValidateForm = errors => {
                                     <td>{maids.marital_status}</td>
                                     <td>{maids.address}</td>
                                     <td>{maids.contact_no}</td>
+                                    <td>{maids.is_active}</td>
                                     <td><button onClick={this.update(maids)}>Update</button></td>
                                     {/*<td><a href="/updatemaid">Update</a></td>*/}
                                     <td><button onClick={this.delete(maids)} >Delete</button></td>
